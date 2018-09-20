@@ -1,0 +1,27 @@
+{
+  "name": "react-epam-cdp-13-09-18",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OlegLustenko/react-epam-cdp-13-09-18.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/OlegLustenko/react-epam-cdp-13-09-18/issues"
+  },
+  "homepage": "https://github.com/OlegLustenko/react-epam-cdp-13-09-18#readme",
+  "prettier": {
+    "semi": true,
+    "jsxBracketSameLine": true,
+    "bracketSpacing": false,
+    "arrowParens": "always",
+    "singleQuote": true
+  }
+}

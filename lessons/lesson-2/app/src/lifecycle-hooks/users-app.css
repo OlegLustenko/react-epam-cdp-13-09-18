@@ -1,0 +1,7 @@
+.users-app {
+  width: 300px;
+}
+
+.users-app > * {
+  width: 100%;
+}

@@ -1,0 +1,13 @@
+.users-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.users-list-item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.users-list-item > div {
+  padding-right: 10px
+}
