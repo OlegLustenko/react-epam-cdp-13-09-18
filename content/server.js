@@ -65,10 +65,11 @@ app.use(
       'https://api.randomuser.me/?nat=us,gb&results=50',
     );
 
-    const parsedResult = result.data.results.map((user) => ({
+    const parsedResult = result.data.results.map((user, i) => ({
       name: `${user.name.first} ${user.name.last}`,
       email: user.email,
       thumbnail: user.picture.thumbnail,
+      isActive: i === 0,
     }));
 
     ctx.body = parsedResult;

@@ -23,5 +23,12 @@
     "bracketSpacing": false,
     "arrowParens": "always",
     "singleQuote": true
+  },
+  "dependencies": {
+    "enzyme": "^3.7.0",
+    "enzyme-adapter-react-16": "^1.6.0",
+    "react-loadable": "^5.5.0",
+    "react-redux": "^5.0.7",
+    "redux": "^4.0.0"
   }
 }
