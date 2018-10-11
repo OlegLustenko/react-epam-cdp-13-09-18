@@ -6,6 +6,7 @@ import {YoutubeSearchRedux} from './features/youtube-search/youtube-search';
 
 const store = initStore();
 
+/* DDD */
 export const YoutubeSearchApp = () => (
   <Provider store={store}>
     <YoutubeSearchRedux />

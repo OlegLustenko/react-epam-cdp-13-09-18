@@ -8,60 +8,63 @@ import VideoDetail from './components/video-detail';
 
 const DEFAULT_KEY = `AIzaSyC1ORL6Y3zxvLLev6QHUqP8eF1hFbYo1WI`;
 
-export class YoutubeSearch extends Component {
+export function youtubeSearchCreator({localStorage, YTSearch}) {
+  return class YoutubeSearch extends Component {
+    constructor(props) {
+      super(props);
 
-  constructor(props) {
-    super(props);
+      this.state = {
+        videos: [],
+        selectedVideo: null,
+        term: 'marvel',
+      };
+    }
 
-    this.state = {
-      videos: [],
-      selectedVideo: null,
-      term: 'marvel',
-    };
-  }
+    componentDidMount() {
+      this.videoSearch(this.state.term);
+    }
 
-  componentDidMount() {
-    this.videoSearch(this.state.term);
-  }
+    videoSearchDEBOUNCED = debounce((term) => {
+      this.videoSearch(term);
+    }, 300);
 
-  videoSearchDEBOUNCED = debounce((term) => {
-    this.videoSearch(term);
-  }, 300);
+    render() {
+      const {
+        selectedVideo,
+        videos,
+      } = this.state;
 
-  render() {
-    const {
-      selectedVideo,
-      videos,
-    } = this.state;
-
-    return (
-      <div>
-        <SearchBar onSearchTermChange={this.videoSearchDEBOUNCED}/>
-        <div className="row">
-          <VideoDetail videos={selectedVideo}/>
-          <VideoList onVideoSelect={this.onVideoSelect} videos={videos}/>
+      return (
+        <div>
+          <SearchBar onSearchTermChange={this.videoSearch}/>
+          <div className="row">
+            <VideoDetail videos={selectedVideo}/>
+            <VideoList onVideoSelect={this.onVideoSelect} videos={videos}/>
+          </div>
         </div>
-      </div>
-    );
-  }
+      );
+    }
 
-  onVideoSelect = (selectedVideo) => {
-    this.setState({selectedVideo});
-  };
+    onVideoSelect = (selectedVideo) => {
+      this.setState({selectedVideo});
+    };
 
-  getApiKey() {
-    return localStorage.getItem('api_key') || DEFAULT_KEY;
-  }
+    getApiKey() {
+      return localStorage.getItem('api_key') || DEFAULT_KEY;
+    }
 
-  videoSearch(term) {
-    const API_KEY = this.getApiKey();
+    videoSearch = (term) => {
+      const API_KEY = this.getApiKey();
 
-    YTSearch({key: API_KEY, term: term}, (videos) => {
-      this.setState({
-        videos: videos,
-        selectedVideo: videos[0],
+      /* DI */
+      YTSearch({key: API_KEY, term}, (videos) => {
+        this.setState({
+          videos,
+          selectedVideo: videos[0],
+        });
       });
-    });
-  }
-};
+    };
+  };
+}
 
+export const YoutubeSearch = youtubeSearchCreator({YTSearch, localStorage});

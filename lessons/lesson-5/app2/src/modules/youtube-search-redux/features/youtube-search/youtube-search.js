@@ -22,12 +22,6 @@ export class YoutubeSearchReduxComponent extends Component {
   }
 
   render() {
-    // const videoSearch = debounce((term) => {
-    //   this.videoSearch(term);
-    // }, 300);
-    //
-    // const {selectedVideo, videos} = this.state;
-
     return (
       <div>
         <YoutubeSearchBar/>
@@ -39,32 +33,6 @@ export class YoutubeSearchReduxComponent extends Component {
       </div>
     );
   }
-
-  //
-  // constructor(props) {
-  //   super(props);
-  //
-  //   this.state = {
-  //     videos: [],
-  //     selectedVideo: null,
-  //     term: 'marvel',
-  //   };
-  // }
-  //
-  // onVideoSelect = (selectedVideo) => {
-  //   this.setState({selectedVideo});
-  // };
-  //
-  // videoSearch(term) {
-  //   const API_KEY = this.getApiKey();
-  //
-  //   YTSearch({key: API_KEY, term: term}, (videos) => {
-  //     this.setState({
-  //       videos: videos,
-  //       selectedVideo: videos[0],
-  //     });
-  //   });
-  // }
 }
 
 export const YoutubeSearchRedux = connect(null, {
